@@ -35,27 +35,6 @@ Unit OSSystem;
 (*    Windows'95 using Novell and Ndos as primary shell                   *)
 (**************************************************************************)
 
-{  Updates/Bugfixes:                                                       }
-{   +  (08/02/95)                                                          }
-{          Created and completed the whole unit. also tested it under      }
-{          Desqview, Windows and Tame.                                     }
-{   $  (08/03/95)                                                          }
-{          Optimized startup code by putting ASM procedures directly       }
-{          i.e no CALL proc at startup.                                    }
-(* Version 1.1: Windows found a bug related to the stack, there are *)
-(* local variables in the DetectShell function, therefore so RET    *)
-(* instruction is invalid! Wonder why pascal did not detect this    *)
-(* error.                                                           *)
-{   +  (08/06/95)                                                           }
-{          Removed all useless global variables                             }
-{   +  (08/07/95)                                                           }
-{          Automatic Detection at Startup also works in Protected Mode.     }
-{          I have tested the application under Windows for DPMI.            }
-{          BTW MUCH MUCH SLOWER IN PROTECTED MODE!!                         }
-{   +      TMultitask objects first checks if universal idle int is         }
-{          supported. Use that interrupt if it is.                          }
-{   $  16 march 1996                                                        }
-{          Found a bug in Testing shell/OS routine in protected mode, fixed.}
 
 {$IFDEF WINDOWS}
  ERROR: This Program must Run Under the DOS Platform.
@@ -94,13 +73,14 @@ Const
 (*                       TESTOS POSSIBLE VALUES                          *)
 (*************************************************************************)
 (* THESE WILL AFFECT MULTITASKING ABILITIES *)
- OSNone       = $00;    (* Running Under DOS / DOS 5.0+        *)
+ OSNone       = $00;    (* Running Under DOS / DOS 5.0+ or true clone *)
  OSOS2        = $01;    (* Running Under OS/2 Version 2.x      *)
  OSWindows    = $02;    (* Running Under Windows/386           *)
  OSDesqview   = $03;    (* Running Desqview / Topview          *)
  OSDoubleDos  = $04;    (* Running DoubleDOS                   *)
  OSCPMDOS     = $05;    (* Running Concurrent DOS MultiUser    *)
  OSDPMI       = $06;    (* Running DPMI Host V1.0+             *)
+ OSNT         = $07;    (* Running under Windows NT            *)
 
 (* THESE MUST BE PUT BY HAND IN TESTOS - NOT DETECTED *)
  OSMultiLink  = $20;   (* Not Detect by Detect Shell Routine   *)
@@ -628,9 +608,10 @@ Begin
    end;
   Exit;
  end;
-(***********************************************)
-(*      WINDOWS/386 INSTALLATION CHECK         *)
-(***********************************************)
+(************************************************)
+(*      WINDOWS/386 - Windows95/Windows98/WinMe *) 
+(*      INSTALLATION CHECK                      *)
+(************************************************)
  FillChar(Regs, SizeOf(Regs), #0);
  Regs.EAX := $1600;
  RealModeInt($2F, Regs);
@@ -646,6 +627,22 @@ Begin
    end;
   Exit;
  end;
+(***********************************************)
+(*      WINDOWS NT  INSTALLATION CHECK         *)
+(***********************************************)
+ FillChar(Regs, SizeOf(Regs), #0);
+ Regs.EAX := $3306;
+ RealModeInt($21, Regs);
+ if (QuadrupleByte(Regs.EAX).Lo <> $ff) and (QuadrupleByte(Regs.EBX).Hi < 100) and
+   (QuadrupleByte(Regs.EBX).Lo >= 5) then
+  begin
+    if (QuadrupleByte(Regs.EBX).Hi = 50) and (QuadrupleByte(Regs.EBX).Lo = 5) then
+      begin
+        DetectShell:=(OSNT shl 8) or ShellVal;   
+        exit;
+      end;
+  end;
+
 (***********************************************)
 (*     DESQVIEW/TOPVIEW INSTALLATION CHECK     *)
 (***********************************************)
@@ -812,6 +809,23 @@ ASM
  MOV AH, OSWindows        ; (* Windows enhanced mode is running            *)
  JMP @End                 ; (* Return From Function , we got all info      *)
 @NoWindows:
+(***********************************************)
+(*      WINDOWS NT  INSTALLATION CHECK         *)
+(***********************************************)
+ MOV AX,3306h
+ INT DOS_Function
+ CMP AL,0FFh
+ JE  @NoNT
+ CMP BH,100
+ JG  @NoNT
+ CMP BL,5
+ JNE @NoNT
+ CMP BH,50
+ JNE @NoNT
+ MOV AL, [ShellVal]   
+ MOV AH, OSNT        
+ JMP @End            
+@NoNT:
 (***********************************************)
 (*     DESQVIEW/TOPVIEW INSTALLATION CHECK     *)
 (***********************************************)
@@ -1544,3 +1558,8 @@ end;
   Halt;
  end;
 End.
+
+
+{
+  $Log: not supported by cvs2svn $
+}
