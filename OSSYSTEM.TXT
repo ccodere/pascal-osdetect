@@ -1,0 +1,746 @@
+
+UNIT OSSystem
+---------------------------------------------------------------------------
+
+
+These routines are used to detect operating system parameters at
+startup, and also to support time slicing routines under different PC
+operating systems.
+
+This unit will only run in DOS version 3.0+ or greater, otherwise it
+will print an error message (in English) and abort.
+
+
+Targets: Real, Protected.
+
+GLOBAL Variables
+
+These Variables are automatically set when this unit is used:
+(The high byte returns major version number, and the low byte returns)
+(minor version number).
+
+TestDPMI: word
+  Returns the DPMI version or 0 if not running under a DPMI server.
+TestXMS : word
+  Returns the XMS Driver version or 0 if not running an XMS server.
+TestEMS : word
+  Returns the EMS driver version or 0 if not running an EMS server.
+TestShell:word
+  Returns the type of running shell.
+TestOS  : word
+  Returns the type of running operating system.
+TestTame : boolean
+  Return TRUE if running TAME multitasking enhancer
+
+
+CONSTANTS
+---------------------------------------------------------------------------
+
+ The following constants are defined 
+Possible values in the TestShell variable
+ ShellNone          $00          Running standard Shell
+ ShellNDos          $01          Running NDOS/4DOS Shell
+ ShellNovell        $02         Running Novell under standard shell
+ ShellNDosNovell    $03          Running Novell under NDOS/4DOS
+
+Possible TestOS values
+ OSNone        $00            Running Under DOS / DOS 5.0+
+ OSOS2         $01       Running Under OS/2 Version 2.x
+ OSWindows     $02       Running Under Windows/386
+ OSDesqview    $03       Running Desqview / Topview
+ OSDoubleDos   $04        Running DoubleDOS
+ OSCPMDOS      $05        Running Concurrent DOS MultiUser
+ OSDPMI        $06        Running DPMI Host V1.0+
+
+
+
+---------------------------------------------------------------------------
+DetectShell Function
+---------------------------------------------------------------------------
+
+
+Purpose        Returns the type of shell and operating system running
+
+Declaration    DetectShell
+
+Result Type    Word
+
+Remarks            The low byte  returns the type of shell running on top
+                   of  the operating system.
+
+                   The returned shell values are represented
+                   mnemonically by the  ShellXXXX constants.
+
+                   The high byte returns the type of operating system
+                   detected.
+
+                   The returned operating system type are represented
+                   mnemonically by the OSXXXX constants.
+
+                   You should check the TestShell and TestOS
+                   Variables instead of calling this routine.
+
+Restrictions   The following operating systems are NOT detected by
+               this routine: MultiDOS, CSwitch, MultiLink.
+
+Targets         Real, Protected.
+
+
+
+---------------------------------------------------------------------------
+GetAltKey function (ASM)
+---------------------------------------------------------------------------
+
+
+Purpose        Verifies if the Alt Key is pressed.
+
+Declaration    GetAltKey
+
+Result Type    Boolean
+
+Remarks        This function returns true if the Alt key of the
+               keyboard is being pressed, otherwise the function
+               returns false.
+
+               This procedure is used in the modified Turbo Vision
+               package (HandleEvent Method), to put the cursor in  the
+               menu bar when only the Alt key is pressed.  (to
+               simulate MS-DOS's Edit).
+
+Targets             Real, Protected.
+
+Example       Procedure TMyApp.HandleEvent(Var Event: TEvent);
+               Begin { Calls the menu Object when the Alt key is pressed }
+                 If GetAltKey and (Event.KeyCode = KbNoKey) then
+                   Begin
+                    Event.What:= evCommand;
+                    Event.Command := cmMenu; { Execute Menu Command }
+                    Event.InfoPtr := nil;
+                    PutEvent(Event);
+                   end;
+                Inherited HandleEvent(Event);
+                ClearEvent(Event);
+               end;
+
+              Var i:Word;
+               Begin
+               Repeat
+                If GetAltKey then
+                    WriteLn('The Alt Key is being pressed');
+                i:=i+1;
+                Until i = 65535;
+              end.
+
+
+---------------------------------------------------------------------------
+GetDPMIVersion Function
+---------------------------------------------------------------------------
+
+
+Purpose             Returns the DPMI driver version.
+
+Declaration    GetDPMIVersion
+
+Result Type    Word
+
+Remarks        This routine returns the DPMI driver version. The High byte
+               contains the major version number while the Low byte returns
+               the minor version number.
+
+               You should check the TestDPMI variable instead of calling
+               this routine.
+
+
+Restrictions   This routine is used internally by some of the procedures
+herein.
+
+Targets        Real, Protected.
+
+
+Example        Begin
+                If VerifyDPMIPresent then
+                WriteLn('Version:'Hi(GetDPMIVersion),'.',Lo(GetDPMIVersion));
+               end.
+
+
+---------------------------------------------------------------------------
+GetEMSVersion Function
+---------------------------------------------------------------------------
+
+
+Purpose         Returns the EMS driver version.
+
+Declaration    GetEMSVersion
+
+Result Type    Word
+
+Remarks        This routine returns the EMS driver version. The High byte
+               contains the major version number while the Low byte returns
+               the minor version number.
+
+               You should check the TestEMS variable instead of calling
+               this routine.
+
+
+Restrictions   This routine is used internally by some of the procedures
+               herein.
+
+               In protected mode, the version number of the driver returned
+               is the EMS server in protected mode. (if there is one).
+
+Targets        Real, Protected.
+
+
+
+---------------------------------------------------------------------------
+GetXMSVersion Function
+---------------------------------------------------------------------------
+
+
+Purpose        Returns the XMS driver version.
+
+Declaration    GetXMSVersion
+
+Result Type    Word
+
+Remarks        This routine returns the XMS driver version. The High byte
+               contains the major version number while the Low byte returns
+               the minor version number.
+
+               You should check the TestXMS variable instead of calling
+               this routine.
+
+Restrictions   This routine is used internally by some of the  procedures
+               herein.
+
+               In protected mode, the version number of the driver
+               returned is the XMS server in protected mode. (if
+               there is one).
+
+Targets        Real, Protected.
+
+
+---------------------------------------------------------------------------
+GetFreeEMS Function
+---------------------------------------------------------------------------
+
+
+Purpose        Returns the largest memory block available in EMS.
+
+Declaration    GetFreeEMS
+
+Result Type    Word
+
+Remarks        This routine returns the largest available block of memory in
+               kilobytes that can be allocated.
+
+Targets        Real.
+
+Example        Begin
+                If VerifyEMSPresent then
+                 WriteLn(GetFreeEMS,' Kbytes in largest block');
+               end.
+
+
+---------------------------------------------------------------------------
+GetFreeXMS Function
+---------------------------------------------------------------------------
+
+
+Purpose        Returns the largest memory block available in XMS.
+
+Declaration    GetFreeXMS
+
+Result Type    Word
+
+Remarks        This routine returns the largest available block of memory in
+               kilobytes that can be allocated.
+
+Targets        Real.
+
+Example        Begin
+                If VerifyXMSPresent then
+                 WriteLn(GetFreeXMS,' Kbytes in largest block');
+               end.
+
+
+---------------------------------------------------------------------------
+MakeFileBackUp procedure
+---------------------------------------------------------------------------
+
+
+Purpose        Writes data to disk and creates a backup of the file on the
+               disk if it already exists.
+
+Declaration    Procedure MakeFileBackup(Const BackOn:Boolean;
+               FName:FNameStr;Buf:Pointer; Size:Word);
+
+Variables:     BackOn: Boolean -> If True there will be a backup of the
+               file
+               (with extension. bak) if the FName already exists to disk.
+               Fname: FNameStr -> Name of the file to write to disk.
+               Buf: Pointer    -> Address of the data to be written to
+disk.
+               Size: Word      -> size of the data to be written to disk.
+
+Remarks        This File writes Size bytes to disk (using a file name of
+               Fname) starting at memory location Buf. If BackOn is true,
+               the procedure will first verify if the file already exists
+               on disk, if so then it will first be renamed with an
+               extension of .BAK and then the data will be written to disk.
+               If BackOn is false data will simply be written to disk.
+               (even though it may overwrite an existing file).
+
+Restriction    Maximum Size of the Data to be written is 64K (65535 Bytes).
+               There is no length checking so you should use SizeOf to
+               determine the number of bytes to write to disk.
+
+Targets        Real, Protected.
+
+Example        Type
+                   MyArray = Array[1..200] of Longint;
+               Var
+                 MyVar:MyArray;
+                 i:Word;
+               Begin
+               Randomize;
+               For i:=1 to 200 do       { Fill the array with random data }
+                 MyVar[i]:=Abs(Random(5));
+               MakeFileBackup(True,'Myarray.Dat',@MyVar,SizeOf(MyArray));
+               { Writes the data to disk, if the file already exists }
+               { it is renamed as Myarray.bak before the data is     }
+               { written to disk.                                    }
+              end.
+
+
+
+---------------------------------------------------------------------------
+TameInstalled Function
+---------------------------------------------------------------------------
+
+
+Purpose        Verifies if the TAME multitasking enhancer is installed in
+               memory.
+
+Declaration    Function TameInstalled
+
+Result Type    Boolean
+
+Remarks        This routine returns TRUE if tame is installed in memory,
+               otherwise it returns FALSE.
+
+               You should check the TestTame variable instead of calling
+               this routine.
+
+Targets        Real, Protected.
+
+---------------------------------------------------------------------------
+VerifyFilePresence function
+---------------------------------------------------------------------------
+
+
+Purpose        Verifies if a file is in the current active directory.
+
+Declaration    Function VerifyFilePresence(FName: FNameStr)
+
+Result Type    Boolean
+
+Variables      FName: FNameStr -> Name of the file to check. (file.ext
+               format)
+
+Remarks        Verifies if the file FName is present in the current active
+               directory. If it is, the function returns true, otherwise
+               the function returns false.
+
+Targets        Real, Protected.
+
+Example        Var S: String;
+               Begin
+                 S:='myfile.bak';
+                 If VerifyFilePresence(S) then
+                   WriteLn('The file is present')
+                 else
+                WriteLn('The file is missing');
+               end.
+
+---------------------------------------------------------------------------
+VerifyDPMIPresent Function
+---------------------------------------------------------------------------
+
+
+Purpose        Check if a DPMI Driver is present in memory.
+
+Declaration    VerifyDPMIPresent
+
+Result Type    Boolean
+
+Remarks        This routine returns True if a Dos Protected mode interface
+               is present in memory. Otherwise the function returns false.
+
+               You should check the TestDPMI variable instead of calling
+               this routine.
+
+
+Restrictions   This routine is used internally by some of the procedures
+               herein.
+
+Targets        Real, Protected.
+
+Example        Begin
+                 If VerifyDPMIPresent then
+                    WriteLn('You have a DPMI server on your system');
+                 else
+                    WriteLn('You do not have enough memory.');
+               end.
+
+
+---------------------------------------------------------------------------
+VerifyEMSPresent Function
+---------------------------------------------------------------------------
+
+
+Purpose        Checks if an EMS Driver is present in memory.
+
+Declaration    VerifyEMSPresent
+
+Result Type    Boolean
+
+Remarks        This routine returns True if an Expanded Memory manager is
+               present in memory. Otherwise the function  returns false.
+
+               In Protected mode, the EMS driver checked is the one
+               available in protected mode.
+
+               You should check the TestEMS variable instead of calling
+               this routine.
+
+Targets        Real, Protected.
+
+Example        Begin
+                 If VerifyEMSPresent then
+                    WriteLn('You have EMS on your system');
+                 else
+                    WriteLn('You do not have enough memory.');
+               end.
+
+---------------------------------------------------------------------------
+VerifyXMSPresent Function
+---------------------------------------------------------------------------
+
+
+Purpose        Check if an XMS Driver is present in memory.
+
+Declaration    VerifyXMSPresent
+
+Result Type    Boolean
+
+Remarks        This routine returns True if an Extended Memory  manager is
+               present in memory. Otherwise the function returns false.
+
+               You should check the TestXMS variable instead of calling
+               this routine.
+
+Targets        Real, Protected.
+
+Restrictions   This routine is used internally by some of the procedures
+               herein.
+
+               In Protected mode, the XMS driver checked is the one
+               available in protected mode.
+
+Example        Begin
+                 If VerifyXMSPresent then
+                    WriteLn('You have XMS on your system');
+                 else
+                    WriteLn('You do not have enough memory.');
+               end.
+
+
+TMultiTask
+---------------------------------------------------------------------------
+
+
+Tmultitask and its derived classes are objects which permit using the
+enhanced capabilities of multitasking environments.
+
+
+The following derived objects are available:
+  TMultiDOS - Object to use when running under MultiDOS
+  TDoubleDOS - Object to use when running under DoubleDOS
+  TCSwitch   - Object to use when Running under CSwitch
+  TMultilink - Object to use when running under Multilink
+  TWindows - Object to use when running under Windows/386
+  TMultiUserDOS - Object to use when running under Cocurrent DOS multiuser
+  TDesqview - Object to use when running under Desqview/Topview/TaskView
+
+
+FIELDS ---------------------------------------------------------------------
+
+Universal: Boolean;
+
+           TRUE if the universal time-slicing mechanism is supported
+        (see Ralph Brown's interrupt list for more info.)
+
+
+METHODS -------------------------------------------------------------------
+
+Init           constructor Init;
+
+                    Verifies if the universal time slicing routine is supported,
+                    if so sets Universal to TRUE.
+
+
+GiveTimeSlice procedure GiveTimeSlice; virtual;
+
+              If Universal is true calls the universal time-slicing
+              interrupt.
+
+              If universal is false and we are running under Novell
+              Netware, call that time slicing interrupt.
+
+              OS/2 and Windows/386 both support the universal time slicing
+              routine.
+
+
+BeginCritical procedure BeginCritical; virtual;
+
+              The base object method does nothing, but depending on the
+              derived class, this routine disables task-switching until
+              the EndCritical routine is called.
+
+EndCritical    procedure EndCritical; virtual;
+
+              Resumes Task-switching.
+
+
+Done          destructor Done; virtual;
+
+              This routine presently does nothing.
+
+
+
+---------------------------------------------------------------------------
+XglobalDOSAlloc Function
+---------------------------------------------------------------------------
+
+
+Purpose        Allocate some real mode memory in protected mode.
+
+Declaration    XGlobalDOSAlloc(size: longint; var p: Pointer)
+
+Result Type    word
+               (real mode segment of allocated memory block)
+
+Variables      size: longint -> number of memory bytes requested
+               P: Pointer -> Selector:Offset of allocated memory
+               block (on return).
+
+
+Remarks        This routine allocates some real mode conventional memory, it is
+               mainly used to call real mode interrupt routines requiring real
+               mode adresses.
+
+               If the real mode segment return address is zero, this
+               indicates that the memory could not be allocated for a
+               reason or another.
+
+               The memory is already locked when allocated, the protected
+               mode server automatically locks it into place for you. (i.e
+               it is guaranteed not to move)
+
+               The real mode allocated memory block always has an offset of
+               zero.
+
+Targets        Protected.
+
+Restrictions   Real mode memory is a scarse ressource and should be freed
+               as soon as you have finished using it. (cf XGlobalDOSFree).
+
+
+---------------------------------------------------------------------------
+XglobalDOSFree Function
+---------------------------------------------------------------------------
+
+
+Purpose        Free up some real mode memory allocated by the
+               XGlobalDOSAlloc routine.
+
+Declaration    XGlobalDOSFree(Var p: Pointer)
+
+Variables      P: Pointer -> Selector:Offset of allocated memory
+               block to Free (zero if function was successfull).
+
+
+Remarks        This routine frees some real mode memory which was
+               previously allocated using the XGlobalDOSAlloc routine.
+
+               If the selector of P is zero on return then the function was
+               successfull, otherwise the DPMI server could not free up the
+               memory for one reason or another.
+
+Targets        Protected.
+
+
+
+---------------------------------------------------------------------------
+RealModeInt Procedure
+---------------------------------------------------------------------------
+
+
+Purpose   Call a real mode interrupt in protected mode
+
+Declaration    RealModeInt(IntNo: word; Var Regs: TDPMIRegisters)
+
+Variables      IntNo: word -> real mode Interrupt (0-255) to call
+               Regs: TDPMIRegisters -> Registers to call interrupt
+               with
+
+
+Remarks        This routine tells the protected mode server to switch to  real
+               mode and call a real mode interrupt before returning to protected
+               mode.
+
+               On return, the regs parameters will be changed accordingly
+               to the interrupt called.
+
+Targets        Protected.
+
+Restrictions   all unused REGS should be set to zero on entry to this
+               procedure (DPMI server requirement).
+
+               regs which contain adresses must point to REAL MODE segments
+               offsets pairs. Not selector:offsets pairs!
+
+
+
+Calling real mode interrupts in protected mode
+
+As you may know, real mode adressing on the personal computer has always
+been done on segment:offset pairs which are governed by some strange laws.
+(these strange laws indicate that a segment cannot exceed 64K in size, as
+well as having a limited direct adressing capability of 1 Meg of RAM)
+
+When protected mode was presented to the public in 286 computers a while
+back, then you could access up to 16 megs of ram by hardware! An industry
+standard, the DOS Protected mode interface was introduced to take advantage
+of this. This interface was used to manage protected mode memory and
+interrupts. In other words the computer would run in another mode that we
+were used to, when programs called for it! In the protected mode
+environment,each address would have a selector: offset pair, and these
+would not be equal to the physical memory!! In other words the computer
+would have the real mode and the protected mode! (two worlds apart), each
+one having its own interrupt vectors as well as its own adressing scheme.
+
+But the DPMI standard only indicated that the basic interrupts should be
+available in protected mode (i.e DOS, and basic BIOS interrupts), so today
+depending on the protected mode server you chose for your programs, the
+interrupts you wish to use, may or may not be implemented in protected mode.
+
+What to do in that case ? Simple! You simply need to call the real mode
+interrupt instead! To do that you must call the DPMI server and tell it
+to switch to real mode and execute the interrupt you specified. But
+watch out, the parameters you must pass on to these real mode interrupts
+must use real mode adresses if they require them!! That is where
+XGlobalDOSAlloc and XGlobalDOSFree come in handy.
+
+Calling interrupts in protected mode:
+ If you wish to call a basic interrupt:
+   - check if the server supports the protected mode version of the
+     interrupt. All servers should support DOS functions as well as basic
+     BIOS interrupt directly. In that case simply call the interrupt
+     as you would do it in real mode (the addresses, if required will
+     be in selector:offset pairs, but this will be taken care by
+     the DPMI server).
+
+     The borland DPMI server does not seem to support BIOS routines
+     which require adresses as parameters (such as get BIOS font pointers,
+     etc..)
+
+   - if the protected mode version of the interrupt is not supported
+     by the server, then call the RealModeInt procedure:
+
+     example:
+      Var regs: TDPMIregisters;
+      { this will check if 4DOS is resident in memory }
+      { set up all TDPMIregisters to zero }
+      FillChar(Regs, SizeOf(Regs), #0);
+      { set up parameters of registers as usual }
+      Regs.EAX := $D44D;
+      Regs.EBX := $0000;
+      { call real mode interrupt }
+      RealModeInt($2F, Regs);
+      { check return values (if applicable) }
+      If Regs.EAX = $44DD then
+        ShellVal := ShellNDos
+      else
+        ShellVal := ShellNone;
+        ...
+
+     The RealModeInt procedure simply calls the DPMI server, telling it to
+     switch to real mode, call the real mode interrupt, and to
+     switch back to protected mode.
+
+
+     - if you are required to call a real mode interrupt which
+       must have some adresses as parameters, you must do the
+       following:
+        - let us say you must send a record memory address:
+           - Set up the record as usual in pascal
+           - allocate some real mode memory
+           - copy the record to this area of allocated
+             memory
+           - set up the registers accordingly (the address registers
+             should contain the segment:offset address returned when
+             the real mode memory was allocated).
+           - call RealModeInt
+           - check the results
+           - free up the real mode memory
+       example:
+
+        Procedure ChangeVGAChar(Var AChar: TVGAChar; CharNum: Byte);
+        { This routine changes the VGA character CharNum to the }
+        { bit pattern stored in TVGAChar                        }
+        Var
+         DPMIRegs: TDPMIRegisters; { Registers }
+         APtr: Pointer;            { Selector: Offset of allocated mem }
+         Segment: Word;            { Segment of allocated memory       }
+         Begin
+          { Allocate some real mode memory }
+          { Segment and APtr point to the same memory address }
+          { Segment in real mode and APtr in protected mode   }
+          Segment := XGlobalDOSAlloc(16*9, APtr);
+          If Segment  <> 0 then
+          { verify if allocation was successfull }
+          Begin
+            { Move bit patterns to protected mode address }
+            { APtr^                                       }
+            Move(Achar ,APtr^, 16*9);
+            { Set up the registers                        }
+            FillChar(DPMIRegs, SizeOf(DPMIRegs), #0);
+            { Set up function call                        }
+            DPMIRegs.EAX := $1100;
+            DPMIRegs.EBX := $1000;
+            DPMIRegs.ECX := $01;
+            DPMIRegs.EDX := CharNum;
+            { Address of bit pattern - REAL MODE address!         }
+            DPMIRegs.ES :=  Segment;
+            { offset is always is zero when using XGlobalDOSAlloc }
+            DPMIRegs.EBP := $0000;
+            { Call interrupt }
+            RealModeInt($10, DPMIRegs);
+            { Free up the real mode memory }
+            XGlobalDosFree(APtr);
+          end;
+
+
+
+
+
+
+
+
+
+
+
+
+

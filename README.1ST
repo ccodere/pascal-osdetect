@@ -1,0 +1,25 @@
+This unit contains some general purpose routines for
+operating systems, it automatically detects the following:
+
+- Version of XMS driver (if available)
+- Version of DPMI driver (if available)
+- Version of EMS driver (if available)
+- if running under Novell, and under NDOS/4DOS shell.
+- running under what type of operating system:
+   detects the following among others
+    - OS/2
+    - Desqview/Topview
+    - Windows 
+
+I have been using these routines for over a year now without any problem,
+so there should be no crashing bugs! But there is no warranty!
+
+The document files are in two formats:
+Rich-Text format
+Wordperfect V5.1
+
+The document fully explains how to use certain interrupt calls in protected 
+mode, as well as a reference to all the included procedures and objects.
+
+Carl Eric Codere
+6 June 1996

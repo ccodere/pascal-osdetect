@@ -1,0 +1,6 @@
+Pascal Real/Protected modes
+automatic XMS/EMS/DPMI/Shell
+and operating system detection
+routines. Also includes info 
+on how to use interrupts in
+protected mode.
