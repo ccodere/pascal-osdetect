@@ -1,0 +1,714 @@
+{\rtf1\ansi \deff11\deflang1033{\fonttbl{\f4\froman\fcharset0\fprq2 Times New Roman;}{\f11\fmodern\fcharset0\fprq1 Courier New;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;
+\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;
+\red192\green192\blue192;}{\stylesheet{\f11\fs20 \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}{\s15 \f11 \sbasedon0\snext15 endnote text;}{\*\cs16 \additive\super \sbasedon10 endnote reference;}{\s17 \f11 \sbasedon0\snext17 footnote text;}
+{\*\cs18 \additive\super \sbasedon10 footnote reference;}{\s19\fi-720\li720\ri720\sb480\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 1;}{\s20\fi-720\li1440\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 2;}{
+\s21\fi-720\li2160\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 3;}{\s22\fi-720\li2880\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 4;}{\s23\fi-720\li3600\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 
+toc 5;}{\s24\fi-720\li720\tqr\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 6;}{\s25\fi-720\li720\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 7;}{\s26\fi-720\li720\tqr\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 8;}{
+\s27\fi-720\li720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toc 9;}{\s28\fi-1440\li1440\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 index 1;}{\s29\fi-720\li1440\ri720\tqr\tldot\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 
+index 2;}{\s30\tqr\tx9360\hyphpar0 \f11\fs20 \sbasedon0\snext0 toa heading;}{\s31 \f11 \sbasedon0\snext0 caption;}{\*\cs32 \additive _Equation Caption;}}{\info{\author Stagiaire Super !}{\creatim\yr1996\mo6\dy7\hr16\min38}{\version1}{\edmins0}{\nofpages0}
+{\nofwords0}{\nofchars0}{\vern49213}}\margl1440\margr720\margt720\margb1134 \ftnbj\aenddoc\hyphhotz1023\aftnnar\notabind\wraptrsp\nocolbal\transmf\hyphcaps0 \fet0{\*\ftnsep \pard\plain \f11\fs20 {\fs24 \chftnsep }
+\par }{\*\aftnsep \pard\plain \sl-20\slmult1 \f11\fs20 {\fs24 
+\par }}{\*\aftnsepc \pard\plain \f11\fs20 {\fs24  }
+\par }{\*\aftncn \pard\plain \f11\fs20 {\fs24  }
+\par }\sectd \pgnrestart\linex0\headery709\footery1134\colsx709 {\*\pnseclvl1\pnucrm\pnstart1 {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1 {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1 {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1 {\pntxta .}}{\*\pnseclvl5
+\pndec\pnstart1 {\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1 {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1 {\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1 {\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}
+\pard\plain \hyphpar0 \f11\fs20 {\f4\fs24 
+\par }{\b\f4\fs24 UNIT OSSystem}{\field{\*\fldinst {\f4\fs24 PRIVATE }{\f4 {\*\datafield 0c0070686f656e6978000100000042000200e6294100000003019059080045000046000000000000000000000000000000000000000000000000000000000000}}}{\fldrslt }}{\f4\fs24 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par These routines are used to detect operating system parameters at startup, and also to support time slicing routines under different PC operating systems.
+\par 
+\par This unit will only run in DOS version 3.0+ or greater, otherwise it will print an error message (in English) and abort.
+\par 
+\par 
+\par TARGETS: Real, Protected.
+\par 
+\par }{\b\f4\fs24 GLOBAL VARIABLES}{\f4\fs24 
+\par 
+\par These variables are automatically set when this unit is used:
+\par (The high byte returns major version number, and the low byte returns)
+\par (minor version number).
+\par 
+\par TestDPMI: word
+\par   Returns the DPMI version or 0 if not running under a DPMI server.
+\par TestXMS : word
+\par   Returns the XMS Driver version or 0 if not running an XMS server.
+\par TestEMS : word
+\par   Returns the EMS driver version or 0 if not running an EMS server.
+\par TestShell:word
+\par   Returns the type of running shell.
+\par TestOS  : word
+\par   Returns the type of running operating system.
+\par TestTame : boolean
+\par   Return TRUE if running TAME multitasking enhancer
+\par 
+\par 
+\par CONSTANTS }{\f4\lang1024 {\*\do\dobxmargin\dobypage\dodhgt4096\dprect\dpx1522\dpy9922\dpxsize8606\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew2\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{
+\f4\fs24 
+\par 
+\par  The following constants are defined
+\par 
+\par Possible values in the TestShell variable
+\par  ShellNone    = $00;   Running standard Shell
+\par  ShellNDos    = $01;   Running NDOS/4DOS Shell
+\par  ShellNovell  = $02;   Running Novell under standard shell
+\par  ShellNDosNovell= $03; Running Novell under NDOS/4DOS
+\par 
+\par Possible TestOS values
+\par  OSNone       = $00;    Running Under DOS / DOS 5.0+
+\par  OSOS2        = $01;    Running Under OS/2 Version 2.x
+\par  OSWindows    = $02;    Running Under Windows/386
+\par  OSDesqview   = $03;    Running Desqview / Topview
+\par  OSDoubleDos  = $04;    Running DoubleDOS
+\par  OSCPMDOS     = $05;    Running Concurrent DOS MultiUser
+\par  OSDPMI       = $06;    Running DPMI Host V1.0+
+\par 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 DetectShell Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        Returns the type of shell and operating system running
+\par 
+\par Declaration    DetectShell
+\par 
+\par Result Type    Word
+\par 
+\par Remarks        \tab The low byte  returns the type of shell running on top of  the operating system.
+\par 
+\par                \tab The returned shell values are represented mnemonically by the  ShellXXXX constants.
+\par 
+\par }\pard \li720\hyphpar0 {\f4\fs24             The high byte returns the type of operating system detected.
+\par 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 The returned operating system type are represented  mnemonically by the OSXXXX constants.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestShell and TestOS variables instead of calling this routine.
+\par 
+\par Restrictions 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 The following operating systems are NOT detected by this routine: MultiDOS, CSwitch, MultiLink.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets       \tab  Real, Protected.
+\par 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetAltKey function (ASM)
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        \tab Verifies if the Alt Key is pressed.
+\par 
+\par Declaration    \tab GetAltKey
+\par 
+\par Result Type    Boolean
+\par 
+\par Remarks       
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This function returns true if the Alt key of the keyboard is being pressed, otherwise the function returns false.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par }\pard \li1440\hyphpar0 {\f4\fs24  This procedure is used in the modified Turbo Vision package (HandleEvent Method), to put the cursor in  the menu bar when only the Alt key is pressed.  (to simulate MS\_DOS's Edit).
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets        \tab Real, Protected.
+\par 
+\par }{\fs22 Example       Procedure TMyApp.HandleEvent(Var Event: TEvent);
+\par                Begin \{ Calls the menu Object when the Alt key is pressed \}
+\par                  If GetAltKey and (Event.KeyCode = KbNoKey) then
+\par                    Begin
+\par                     Event.What:= evCommand;
+\par                     Event.Command := cmMenu; \{ Execute Menu Command \}
+\par                     Event.InfoPtr := nil;
+\par                     PutEvent(Event);
+\par                    end;
+\par                 Inherited HandleEvent(Event);
+\par                 ClearEvent(Event);
+\par                end;
+\par 
+\par               Var i:Word;
+\par                Begin
+\par                Repeat
+\par                 If GetAltKey then
+\par                     WriteLn('The Alt Key is being pressed');
+\par                 i:=i+1;
+\par                 Until i = 65535;
+\par               end.
+\par }{\f4\fs24 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetDPMIVersion Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        \tab Returns the DPMI driver version.
+\par 
+\par Declaration    \tab GetDPMIVersion
+\par 
+\par Result Type    Word
+\par 
+\par Remarks    \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns the DPMI driver version. The High byte contains the major version number while the Low byte returns the minor version number.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestDPMI variable instead of calling this routine.
+\par 
+\par 
+\par Restrictions   \tab This routine is used internally by some of the procedures herein.
+\par 
+\par Targets        \tab Real, Protected.
+\par 
+\par 
+\par }{\fs22 Example   Begin
+\par             If VerifyDPMIPresent then
+\par               WriteLn('Version:'Hi(GetDPMIVersion),'.',Lo(GetDPMIVersion));
+\par           end.
+\par }{\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetEMSVersion Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose       \tab  Returns the EMS driver version.
+\par 
+\par Declaration    \tab GetEMSVersion
+\par 
+\par Result Type    Word
+\par 
+\par Remarks      \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns the EMS driver version. The High byte contains the major version number while the Low byte returns the minor version number.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestEMS variable instead of calling this routine.
+\par 
+\par 
+\par Restrictions   \tab This routine is used internally by some of the procedures herein.
+\par 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 In protected mode, the version number of the driver returned is the EMS server in protected mode. (if there is one).
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets       \tab Real, Protected.
+\par 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetXMSVersion Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        \tab Returns the XMS driver version.
+\par 
+\par Declaration    GetXMSVersion
+\par 
+\par Result Type    Word
+\par 
+\par Remarks   
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns the XMS driver version. The High byte contains the major version number while the Low byte returns  the minor version number.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestXMS variable instead of calling  this routine.
+\par }\pard \li1440\hyphpar0 {\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 Restrictions   \tab This routine is used internally by some of the  procedures herein.
+\par }\pard \li1440\hyphpar0 {\f4\fs24 
+\par  In protected mode, the version number of the driver returned is the XMS server in protected mode. (if there is one).
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets        \tab Real, Protected.
+\par 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetFreeEMS Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        \tab Returns the largest memory block available in EMS.
+\par 
+\par Declaration    GetFreeEMS
+\par 
+\par Result Type    Word
+\par 
+\par Remarks        This routine returns the largest available block of memory in kilobytes that can be allocated.
+\par 
+\par Targets       \tab Real.
+\par 
+\par }{\fs22 Example    Begin
+\par                If VerifyEMSPresent then
+\par                 WriteLn(GetFreeEMS,' Kbytes in largest block');
+\par            end.
+\par }{\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 GetFreeXMS Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        Returns the largest memory block available in XMS.
+\par 
+\par Declaration    GetFreeXMS
+\par 
+\par Result Type    Word
+\par 
+\par Remarks        This routine returns the largest available block of memory in kilobytes that can be allocated.
+\par 
+\par Targets        \tab Real.
+\par 
+\par }{\fs22 Example    Begin
+\par              If VerifyXMSPresent then
+\par                WriteLn(GetFreeXMS,' Kbytes in largest block');
+\par            end.
+\par }{\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 MakeFileBackUp procedure
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose       \tab Writes data to disk and creates a backup of the file on the disk if it already exists.
+\par 
+\par Declaration 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 Procedure MakeFileBackup(Const BackOn:Boolean; FName:FNameStr;Buf:Pointer; Size:Word);
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Variables:    \tab BackOn: Boolean \_> If True there will be a backup of the file
+\par               \tab (with extension. bak) if the FName already exists to disk.
+\par               \tab Fname: FNameStr \_> Name of the file to write to disk.
+\par               \tab Buf: Pointer    \_> Address of the data to be written to disk.
+\par               \tab Size: Word      \_> size of the data to be written to disk.
+\par 
+\par Remarks   \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24  This File writes Size bytes to disk (using a file name of Fname) starting at memory location Buf. If BackOn is tru
+e, the procedure will first verify if the file already exists on disk, if so then it will first be renamed with an extension of .BAK and then the data will be written to disk. If BackOn is false data will simply be written to disk. (even though it may ove
+rwrite an existing file).
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Restriction  \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 Maximum Size of the Data to be written is 64K (65535 Bytes). There is no length checking so you should use SizeOf to determine the number of bytes to write to disk.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets       \tab  Real, Protected.
+\par 
+\par }{\fs22 Example       Type
+\par                MyArray = Array[1..200] of Longint;
+\par               Var
+\par                MyVar:MyArray;
+\par                i:Word;
+\par               Begin
+\par                Randomize;
+\par                For i:=1 to 200 do       \{ Fill the array with random data \}
+\par                  MyVar[i]:=Abs(Random(5));
+\par                MakeFileBackup(True,'Myarray.Dat',@MyVar,SizeOf(MyArray));
+\par                \{ Writes the data to disk, if the file already exists \}
+\par                \{ it is renamed as Myarray.bak before the data is     \}
+\par                \{ written to disk.                                    \}
+\par               end.
+\par }{\f4\fs24 
+\par 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 TameInstalled Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose    \tab Verifies if the TAME multitasking enhancer is installed in memory.
+\par 
+\par Declaration    TameInstalled
+\par 
+\par Result Type    Boolean
+\par 
+\par Remarks        This routine returns TRUE if tame is installed in memory, otherwise it returns FALSE.
+\par 
+\par }\pard \li720\hyphpar0 {\f4\fs24           You should check the TestTame variable instead of calling  this routine.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets         Real, Protected.
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 VerifyFilePresence function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        \tab Verifies if a file is in the current active directory.
+\par 
+\par Declaration   \tab  Function VerifyFilePresence(FName: FNameStr)
+\par 
+\par Result Type      Boolean
+\par 
+\par Variables     \tab  FName: FNameStr \_> Name of the file to check. (file.ext format)
+\par 
+\par Remarks     \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 Verifies if the file FName is present in the current active directory. If it is, the function returns true, otherwise the function returns false.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Targets        \tab Real, Protected.
+\par 
+\par }{\fs22 Example        Var S: String;
+\par                Begin
+\par                  S:='myfile.bak';
+\par                  If VerifyFilePresence(S) then
+\par                    WriteLn('The file is present')
+\par                  else
+\par                 WriteLn('The file is missing');
+\par                end.
+\par }{\f4\fs24 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 VerifyDPMIPresent Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        Check if a DPMI Driver is present in memory.
+\par 
+\par Declaration    VerifyDPMIPresent
+\par 
+\par Result Type    Boolean
+\par 
+\par Remarks     \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns True if a Dos Protected mode interface is present in memory. Otherwise the function returns false.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestDPMI variable instead of calling this routine.
+\par 
+\par 
+\par Restrictions   \tab This routine is used internally by some of the procedures herein.
+\par 
+\par Targets        \tab Real, Protected.
+\par 
+\par }{\fs22 Example        Begin
+\par                  If VerifyDPMIPresent then
+\par                     WriteLn('You have a DPMI server on your system');
+\par                  else
+\par                     WriteLn('You do not have enough memory.');
+\par                end.
+\par }{\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 VerifyEMSPresent Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        Checks if an EMS Driver is present in memory.
+\par 
+\par Declaration    VerifyEMSPresent
+\par 
+\par Result Type    Boolean
+\par 
+\par Remarks  \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns True if an Expanded Memory manager is present in memory. Otherwise the function  returns false.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab In Protected mode, the EMS driver checked is the one available in protected mode.
+\par 
+\par                \tab You should check the TestEMS variable instead of calling  this routine.
+\par 
+\par Targets       \tab  Real, Protected.
+\par 
+\par }{\fs22 Example        Begin
+\par                  If VerifyEMSPresent then
+\par                     WriteLn('You have EMS on your system');
+\par                  else
+\par                     WriteLn('You do not have enough memory.');
+\par                end.
+\par }{\f4\fs24 
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 VerifyXMSPresent Function
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Purpose        Check if an XMS Driver is present in memory.
+\par 
+\par Declaration    VerifyXMSPresent
+\par 
+\par Result Type    Boolean
+\par 
+\par Remarks      \tab 
+\par }\pard \li1440\hyphpar0 {\f4\fs24 This routine returns True if an Extended Memory  manager is present in memory. Otherwise the function returns false.
+\par }\pard \hyphpar0 {\f4\fs24 
+\par                \tab You should check the TestXMS variable instead of calling  this routine.
+\par 
+\par Targets       \tab  Real, Protected.
+\par 
+\par Restrictions   \tab This routine is used internally by some of the procedures herein.
+\par 
+\par               \tab  In Protected mode, the XMS driver checked is the one available in protected mode.
+\par 
+\par }{\fs22 Example        Begin
+\par                  If VerifyXMSPresent then
+\par                     WriteLn('You have XMS on your system');
+\par                  else
+\par                     WriteLn('You do not have enough memory.');
+\par                end.
+\par }{\f4\fs24 
+\par 
+\par TMultiTask
+\par }\pard \sl-19\slmult1\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \hyphpar0 {\f4\fs24 
+\par Tmultitask and its derived classes are objects which permit using the
+\par enhanced capabilities of multitasking environments.
+\par 
+\par 
+\par The following derived objects are available:
+\par   TMultiDOS \_ Object to use when running under MultiDOS
+\par   TDoubleDOS \_ Object to use when running under DoubleDOS
+\par   TCSwitch   \_ Object to use when Running under CSwitch
+\par   TMultilink \_ Object to use when running under Multilink
+\par   TWindows \_ Object to use when running under Windows/386
+\par   TMultiUserDOS \_ Object to use when running under Cocurrent DOS multiuser
+\par   TDesqview \_ Object to use when running under Desqview/Topview/TaskView
+\par 
+\par 
+\par }{\f4\lang1024 {\*\do\dobxmargin\dobypage\dodhgt4096\dprect\dpx1008\dpy1152\dpxsize9206\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew2\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 FIELDS 
+
+\par 
+\par Universal: Boolean;
+\par 
+\par            TRUE if the universal time\_slicing mechanism is supported
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 \tab    (see Ralph Brown's interrupt list for more info.)
+\par 
+\par 
+\par }{\f4\lang1024 {\*\do\dobxmargin\dobypage\dodhgt4096\dprect\dpx1296\dpy3312\dpxsize8856\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew2\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 METHODS 
+
+\par 
+\par }{\b\f4\fs24 Init }{\f4\fs24           constructor Init;
+\par 
+\par                \tab Verifies if the universal time slicing routine is supported,  if so sets Universal to TRUE.
+\par 
+\par 
+\par }{\b\f4\fs24 GiveTimeSlice}{\f4\fs24   Procedure GiveTimeSlice; Virtual;
+\par 
+\par }\pard \li720\tx-720\hyphpar0 {\f4\fs24             If Universal is true calls the universal time\_slicing interrupt 
+\par 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 If universal is false and we are running under Novell Netware, call that time slicing interrupt.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par                \tab OS/2 and Windows/386 both support the universal time slicing routine.
+\par 
+\par 
+\par }{\b\f4\fs24 BeginCritical}{\f4\fs24   Procedure BeginCritical; Virtual;
+\par 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24  The base object method does nothing, but depending on the derived class, this routine disables task\_switching until the EndCritical routine is called.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par }{\b\f4\fs24 EndCritical}{\f4\fs24     Procedure EndCritical; Virtual;
+\par 
+\par               \tab  Resumes Task\_switching.
+\par 
+\par 
+\par }{\b\f4\fs24 Done  }{\f4\fs24          \tab Destructor Done; Virtual;
+\par 
+\par                \tab This routine presently does nothing.
+\par 
+\par 
+\par 
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 XglobalDOSAlloc Function
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par Purpose        Allocate some real mode memory in protected mode.
+\par 
+\par Declaration    XGlobalDOSAlloc(size: longint; var p: Pointer)
+\par 
+\par Result Type    word
+\par               \tab  (real mode segment of allocated memory block)
+\par 
+\par Variables      \tab size: longint \_> number of memory bytes requested
+\par                \tab P: Pointer \_> Selector:Offset of allocated memory
+\par                   \tab block (on return).
+\par 
+\par 
+\par Remarks  
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 This routine allocates some real mode conventional memory, it is mainly used to call real mode interrupt routines requiring real mode adresses.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24  If the real mode segment return address is zero, this  indicates that the memory could not be allocated for a reason or another.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24  The memory is already locked when allocated, the protected mode server automatically locks it into place for you. (i.e it is guaranteed not to move)
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par                \tab The real mode allocated memory block always has an offset of zero.
+\par 
+\par Targets       \tab  Protected.
+\par 
+\par Restrictions   \tab 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 Real mode memory is a scarse ressource and should be freed as soon as you have finished using it. (cf XGlobalDOSFree).
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 XglobalDOSFree Function
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par Purpose        \tab Free up some real mode memory allocated by the XGlobalDOSAlloc routine.
+\par 
+\par Declaration    \tab XGlobalDOSFree(Var p: Pointer)
+\par 
+\par Variables      \tab P: Pointer \_> Selector:Offset of allocated memory
+\par                   \tab block to Free (zero if function was successfull).
+\par 
+\par 
+\par Remarks    \tab 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 This routine frees some real mode memory which was previously allocated using the XGlobalDOSAlloc routine.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24  If the selector of P is zero on return then the function was successfull, otherwise the DPMI server could not free up the memory for one reason or another.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par Targets        \tab Protected.
+\par 
+\par 
+\par 
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 RealModeInt Procedure
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par Purpose\tab Call a real mode interrupt in protected mode
+\par 
+\par Declaration    \tab RealModeInt(IntNo: word; Var Regs: TDPMIRegisters)
+\par 
+\par Variables      \tab IntNo: word \_> real mode Interrupt (0\_255) to call
+\par                    \tab  Regs: TDPMIRegisters \_> Registers to call interrupt with
+\par 
+\par 
+\par Remarks \tab  
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 This routine tells the protected mode server to switch to  real mode and call a real mode interrupt before returning to protected mode.
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par                \tab On return, the regs parameters will be changed accordingly  to the interrupt called.
+\par 
+\par Targets       \tab  Protected.
+\par 
+\par Restrictions  \tab  
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 all unused REGS should be set to zero on entry to this  procedure (DPMI server requirement).
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par }\pard \li1440\tx-720\hyphpar0 {\f4\fs24 regs which contain adresses must point to REAL MODE segments  offsets pairs. Not selector:offsets pairs!
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 
+\par 
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 Calling real mode interrupts in protected mode
+\par }\pard \sl-19\slmult1\tx-720\hyphpar0 {\f4\lang1024 {\*\do\dobxmargin\dobypara\dodhgt4096\dprect\dpx0\dpy0\dpxsize9360\dpysize19\dplinehollow\dplinecor0\dplinecog0\dplinecob0\dplinew1
+\dpfillfgcr0\dpfillfgcg0\dpfillfgcb0\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat1}}{\f4\fs24 
+\par }\pard \tx-720\hyphpar0 {\f4\fs24 As you may know, real mode adressing on the personal computer has always
+\par been done on segment:offset pairs which are governed by some strange laws.
+\par (these strange laws indicate that a segment cannot exceed 64K in size, as
+\par well as having a limited direct adressing capability of 1 Meg of RAM)
+\par 
+\par When protected mode was presented to the public in 286 computers a while
+\par back, then you could access up to 16 megs of ram by hardware! An industry
+\par standard, the DOS Protected mode interface was introduced to take advantage
+\par of this. This interface was used to manage protected mode memory and
+\par interrupts. In other words the computer would run in another mode that we
+\par were used to, when programs called for it! In the protected mode environment,
+\par each address would have a selector: offset pair, and these would not be
+\par equal to the physical memory!! In other words the computer would have the
+\par real mode and the protected mode! (two worlds apart), each one having its
+\par own interrupt vectors as well as its own adressing scheme.
+\par 
+\par But the DPMI standard only indicated that the basic interrupts should be
+\par available in protected mode (i.e DOS, and basic BIOS interrupts), so today
+\par depending on the protected mode server you chose for your programs, the
+\par interrupts you wish to use, may or may not be implemented in protected mode.
+\par 
+\par What to do in that case ? Simple! You simply need to call the real mode
+\par interrupt instead! To do that you must call the DPMI server and tell it
+\par to switch to real mode and execute the interrupt you specified. But
+\par watch out, the parameters you must pass on to these real mode interrupts
+\par must use real mode adresses if they require them!! That is where
+\par XGlobalDOSAlloc and XGlobalDOSFree come in handy.
+\par 
+\par Calling interrupts in protected mode:
+\par  If you wish to call a basic interrupt:
+\par    \_ check if the server supports the protected mode version of the
+\par      interrupt. All servers should support DOS functions as well as basic
+\par      BIOS interrupt directly. In that case simply call the interrupt
+\par      as you would do it in real mode (the addresses, if required will
+\par      be in selector:offset pairs, but this will be taken care by
+\par      the DPMI server).
+\par 
+\par      The borland DPMI server does not seem to support BIOS routines
+\par      which require adresses as parameters (such as get BIOS font pointers,
+\par      etc..)
+\par 
+\par    \_ if the protected mode version of the interrupt is not supported
+\par      by the server, then call the RealModeInt procedure:
+\par 
+\par      example:
+\par }{\fs22       Var regs: TDPMIregisters;
+\par       \{ this will check if 4DOS is resident in memory \}
+\par       \{ set up all TDPMIregisters to zero \}
+\par       FillChar(Regs, SizeOf(Regs), #0);
+\par       \{ set up parameters of registers as usual \}
+\par       Regs.EAX := $D44D;
+\par       Regs.EBX := $0000;
+\par       \{ call real mode interrupt \}
+\par       RealModeInt($2F, Regs);
+\par       \{ check return values (if applicable) \}
+\par       If Regs.EAX = $44DD then
+\par         ShellVal := ShellNDos
+\par       else
+\par         ShellVal := ShellNone;
+\par         ...
+\par }{\f4\fs24 
+\par      The RealModeInt procedure simply calls the DPMI server, telling it to
+\par      switch to real mode, call the real mode interrupt, and to
+\par      switch back to protected mode.
+\par 
+\par 
+\par      \_ if you are required to call a real mode interrupt which
+\par        must have some adresses as parameters, you must do the
+\par        following:
+\par         \_ let us say you must send a record memory address:
+\par            \_ Set up the record as usual in pascal
+\par            \_ allocate some real mode memory
+\par            \_ copy the record to this area of allocated
+\par              memory
+\par            \_ set up the registers accordingly (the address registers
+\par              should contain the segment:offset address returned when
+\par              the real mode memory was allocated).
+\par            \_ call RealModeInt
+\par            \_ check the results
+\par            \_ free up the real mode memory
+\par        example:
+\par 
+\par }{\fs22         Procedure ChangeVGAChar(Var AChar: TVGAChar; CharNum: Byte);
+\par         \{ This routine changes the VGA character CharNum to the \}
+\par         \{ bit pattern stored in TVGAChar                        \}
+\par         Var
+\par          DPMIRegs: TDPMIRegisters; \{ Registers \}
+\par          APtr: Pointer;            \{ Selector: Offset of allocated mem \}
+\par          Segment: Word;            \{ Segment of allocated memory       \}
+\par          Begin
+\par           \{ Allocate some real mode memory \}
+\par           \{ Segment and APtr point to the same memory address \}
+\par           \{ Segment in real mode and APtr in protected mode   \}
+\par           Segment := XGlobalDOSAlloc(16*9, APtr);
+\par           If Segment  <> 0 then
+\par           \{ verify if allocation was successfull \}
+\par           Begin
+\par             \{ Move bit patterns to protected mode address \}
+\par             \{ APtr^                                       \}
+\par             Move(Achar ,APtr^, 16*9);
+\par             \{ Set up the registers                        \}
+\par             FillChar(DPMIRegs, SizeOf(DPMIRegs), #0);
+\par             \{ Set up function call                        \}
+\par             DPMIRegs.EAX := $1100;
+\par             DPMIRegs.EBX := $1000;
+\par             DPMIRegs.ECX := $01;
+\par             DPMIRegs.EDX := CharNum;
+\par             \{ Address of bit pattern \_ REAL MODE address!         \}
+\par             DPMIRegs.ES :=  Segment;
+\par             \{ offset is always is zero when using XGlobalDOSAlloc \}
+\par             DPMIRegs.EBP := $0000;
+\par             \{ Call interrupt \}
+\par             RealModeInt($10, DPMIRegs);
+\par             \{ Free up the real mode memory \}
+\par             XGlobalDosFree(APtr);
+\par           end;
+\par }{\f4\fs24 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par }}
